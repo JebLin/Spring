@@ -5,12 +5,12 @@ package indi.sword.spring.helloworld;
  * @Author rd_jianbin_lin
  * @Date 19:55 2017/10/6
  */
-public class HelloWorld {
+public class ScopeInfo {
 
     private String user;
 
-    public HelloWorld() {
-        System.out.println("HelloWorld's constructor without param...");
+    public ScopeInfo() {
+        System.out.println("ScopeInfo's constructor without param...");
     }
 
     public void setUser(String user) {
@@ -18,8 +18,8 @@ public class HelloWorld {
         this.user = user;
     }
 
-    public HelloWorld(String user) {
-        System.out.println("HelloWorld's constructor with user param...");
+    public ScopeInfo(String user) {
+        System.out.println("ScopeInfo's constructor with user param...");
         this.user = user;
     }
 

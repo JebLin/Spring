@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 自动装配: 只声明 bean, 而把 bean 之间的关系交给 IOC 容器来完成 -->
+    <!--
+		byType: 根据类型进行自动装配. 但要求 IOC 容器中只有一个类型对应的 bean, 若有多个则无法完成自动装配.
+		byName: 若属性名和某一个 bean 的 id 名一致, 即可完成自动装配. 若没有 id 一致的, 则无法完成自动装配
+	-->
+    <!-- 在使用 XML 配置时, 自动转配用的不多. 但在基于 注解 的配置时, 自动装配使用的较多.  -->
+    <bean id="dao" class="indi.sword.spring.ref.Dao">
+        <property name="dataSource" value="c3p0"></property>
+    </bean>
+
+    <bean id="dao2" class="indi.sword.spring.ref.Dao">
+        <!-- 为 Dao 的 dataSource 属性赋值为 null, 若某一个 bean 的属性值不是 null, 使用时需要为其设置为 null(了解) -->
+        <property name="dataSource"><null/></property>
+    </bean>
+
+    <!-- 默认情况下 bean 是单例的! -->
+    <!-- 但有的时候, bean 就不能使单例的. 例如: Struts2 的 Action 就不是单例的! 可以通过 scope 属性来指定 bean 的作用域 -->
+    <!--
+        prototype: 原型的. 每次调用 getBean 方法都会返回一个新的 bean. 且在第一次调用 getBean 方法时才创建实例
+        singleton: 单例的. 每次调用 getBean 方法都会返回同一个 bean. 且在 IOC 容器初始化时即创建 bean 的实例. 默认值
+    -->
+    <bean id="dao_prototype" class="indi.sword.spring.ref.Dao" scope="prototype">
+    </bean>
+
+    <bean id="service" class="indi.sword.spring.ref.Service">
+        <!-- 通过 ref 属性值指定当前属性指向哪一个 bean! -->
+        <property name="dao" ref="dao"></property>
+    </bean>
+
+    <!-- 声明使用内部 bean -->
+    <bean id="service2" class="indi.sword.spring.ref.Service">
+        <property name="dao">
+            <!-- 内部 bean, 类似于匿名内部类对象. 不能被外部的 bean 来引用, 也没有必要设置 id 属性 -->
+            <bean class="indi.sword.spring.ref.Dao">
+                <property name="dataSource" value="c3p0"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="action" class="indi.sword.spring.ref.Action">
+        <property name="service" ref="service"></property>
+        <!-- 设置级联属性(了解) -->
+        <property name="service.dao.dataSource" value="dbcp2"></property>
+    </bean>
+
+    <!-- 导入外部的资源文件 -->
+    <context:properties-placeholder location="classpath:db.properties" />
+
+
+    <!-- 配置数据源 -->
+
+</beans>
