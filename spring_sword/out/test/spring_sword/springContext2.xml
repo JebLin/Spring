@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 自动装配: 只声明 bean, 而把 bean 之间的关系交给 IOC 容器来完成 -->
     <!--
@@ -48,6 +49,56 @@
         <property name="service.dao.dataSource" value="dbcp2"></property>
     </bean>
 
+    <!-- 导入外部的资源文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
 
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+
+        <property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+    </bean>
+
+    <!-- 测试 SpEL: 可以为属性进行动态的赋值(了解) -->
+    <bean id="girl" class="indi.sword.spring.helloworld.User">
+        <property name="userName" value="girl1"></property>
+    </bean>
+
+    <bean id="boy" class="indi.sword.spring.helloworld.User" init-method="init" destroy-method="destroy">
+        <property name="userName" value="boy1"></property>
+        <property name="wifeName" value="#{girl.userName}"></property>
+    </bean>
+
+    <!-- Bean 后置处理器而言, 需要实现BeanPostProcessor -->
+    <!-- 配置 bean 后置处理器: 不需要配置 id 属性, IOC 容器会识别到他是一个 bean 后置处理器, 并调用其方法 -->
+    <bean class="indi.sword.spring.ref.MyBeanPostProcessor"></bean>
+
+    <!-- 通过工厂方法的方式来配置 bean -->
+    <!-- 1. 通过静态工厂方法: 一个类中有一个静态方法, 可以返回一个类的实例(了解) -->
+    <!-- 在 class 中指定静态工厂方法的全类名, 在 factory-method 中指定静态工厂方法的方法名 -->
+    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateInstance">
+        <!-- 可以通过 constructor-arg 子节点为静态工厂方法指定参数 -->
+        <constructor-arg value="0" type="int"></constructor-arg>
+    </bean>
+
+    <!-- 2. 实例工厂方法: 先需要创建工厂对象, 再调用工厂的非静态方法返回实例(了解) -->
+    <!-- ①. 创建工厂对应的 bean -->
+    <bean id="simpleDateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-MM-dd hh:mm:ss"></constructor-arg>
+    </bean>
+
+    <!-- ②. 有实例工厂方法来创建 bean 实例 -->
+    <!-- factory-bean 指向工厂 bean, factory-method 指定工厂方法(了解) -->
+    <bean id="datetime" factory-bean="simpleDateFormat" factory-method="parse">
+        <!-- 通过 constructor-arg 执行调用工厂方法需要传入的参数 -->
+        <constructor-arg value="1990-12-12 12:12:12"></constructor-arg>
+    </bean>
+
+    <!-- 配置通过 FactroyBean 的方式来创建 bean 的实例(了解) -->
+    <bean id="user" class="indi.sword.spring.ref.UserBean"></bean>
 
 </beans>

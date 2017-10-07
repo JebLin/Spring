@@ -23,6 +23,7 @@ public class User {
 	}
 
 	public void setUserName(String userName) {
+		System.out.println("setUserName: " + userName);
 		this.userName = userName;
 	}
 
@@ -39,11 +40,11 @@ public class User {
 	}
 
 	public void init(){
-		System.out.println("init method...");
+		System.out.println("User init method...");
 	}
 	
 	public void destroy(){
-		System.out.println("destroy method...");
+		System.out.println("User destroy method...");
 	}
 
 	@Override

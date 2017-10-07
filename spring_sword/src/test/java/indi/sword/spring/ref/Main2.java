@@ -19,12 +19,7 @@ public class Main2 {
 
 		action.execute();
 
-		//测试 bean 的作用域
-		Dao dao1 = (Dao) ctx.getBean("dao2");
-		Dao dao2 = (Dao) ctx.getBean("dao2");
-
-		System.out.println(dao1 == dao2);
-
+		System.out.println("---------------------------------");
 		//测试使用外部属性文件
 		DataSource dataSource = (DataSource) ctx.getBean("dataSource");
 		System.out.println(dataSource.getConnection());
@@ -33,13 +28,16 @@ public class Main2 {
 		User boy = (User) ctx.getBean("boy");
 		System.out.println(boy.getUserName() + ":" + boy.getWifeName());
 
+
+		System.out.println("--------------------------------");
 //		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.FULL);
 		DateFormat dateFormat = (DateFormat) ctx.getBean("dateFormat");
 		System.out.println(dateFormat.format(new Date()));
 
+		System.out.println("---------------------------------");
 		Date date = (Date) ctx.getBean("datetime");
 		System.out.println(date);
-
+		System.out.println("---------------------------------");
 		User user = (User) ctx.getBean("user");
 		System.out.println(user);
 
