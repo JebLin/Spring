@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 配置一个bean -->
+    <bean id="helloWorld" class="indi.sword.spring._01helloworld.HelloWorld">
+        <!-- 为属性赋值 -->
+        <!-- 通过属性注入: 通过 setter 方法注入属性值 -->
+        <property name="user" value="Jeb"></property>
+    </bean>
+
+    <!-- 配置一个bean -->
+    <bean id="helloWorld2"  class="indi.sword.spring._01helloworld.HelloWorld">
+        <!-- 为属性赋值 -->
+        <!-- 通过属性注入: 通过 setter 方法注入属性值 -->
+        <property name="user" value="Jeb2"></property>
+    </bean>
+
+    <!-- 配置一个bean -->
+    <bean id="helloWorld3"  class="indi.sword.spring._01helloworld.HelloWorld">
+        <!-- 为属性赋值 -->
+        <!-- 通过属性注入: 通过 setter 方法注入属性值 -->
+        <constructor-arg value="Jeb3"></constructor-arg>
+    </bean>
+
+    <!-- autowire="byType" -->
+    <bean id="scopeinfo_byname" class="indi.sword.spring._01helloworld.ScopeInfo" autowire="byName">
+        <property name="user" value="Jeb"></property>
+    </bean>
+
+    <!--
+        字面值:
+            字面值：可用字符串表示的值，可以通过 <value> 元素标签或 value 属性进行注入。
+            基本数据类型及其封装类、String 等类型都可以采取字面值注入的方式 .
+            若字面值中包含特殊字符，可以使用 <![CDATA[]]> 把字面值包裹起来。
+    -->
+
+    <!-- 若一个 bean 有多个构造器, 如何通过构造器来为 bean 的属性赋值 -->
+    <!-- 可以根据 index 和 value 进行更加精确的定位. (了解) (按索引匹配入参)(按类型匹配入参) -->
+    <bean id="car" class="indi.sword.spring._01helloworld.Car">
+        <constructor-arg value="brand1" index="1"></constructor-arg>
+        <constructor-arg value="company1" index="0"></constructor-arg>
+        <constructor-arg value="25000.0" type="float"></constructor-arg>
+    </bean>
+    <bean id="car2" class="indi.sword.spring._01helloworld.Car">
+        <constructor-arg value="company2"></constructor-arg>
+        <constructor-arg>
+            <value><![CDATA[<brand2>]]></value>
+        </constructor-arg>
+        <constructor-arg value="180" type="int"></constructor-arg>
+    </bean>
+
+    <!-- 装配集合属性 -->
+    <bean id="user" class="indi.sword.spring._01helloworld.User">
+        <property name="userName" value="user"></property>
+        <property name="wifeName" value="Catherine"></property>
+        <property name="cars">
+            <!-- 使用 list 元素来装配集合属性 -->
+            <list>
+                <ref bean="car"></ref>
+                <ref bean="car2"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <!--
+        在 Spring中可以通过一组内置的 xml 标签(例如: <list>, <set> 或 <map>) 来配置集合属性.
+        配置 java.util.List 类型的属性, 需要指定 <list>  标签, 在标签里包含一些元素. 这些标签可以通过 <value> 指定简单的常量值, 通过 <_02ref> 指定对其他 Bean 的引用. 通过<bean> 指定内置 Bean 定义. 通过 <null/> 指定空元素. 甚至可以内嵌其他集合.
+        数组的定义和 List 一样, 都使用 <list> .
+        配置 java.util.Set 需要使用 <set> 标签, 定义元素的方法与 List 一样.
+        Java.util.Map 通过 <map> 标签定义, <map> 标签里可以使用多个 <entry> 作为子标签. 每个条目包含一个键和一个值.
+        必须在 <key> 标签里定义键 .
+        因为键和值的类型没有限制, 所以可以自由地为它们指定 <value>, <_02ref>, <bean> 或 <null> 元素.
+        可以将 Map 的键和值作为 <entry> 的属性定义: 简单常量使用 key 和 value 来定义; Bean 引用通过 key-_02ref 和 value-_02ref 属性定义.
+        使用 <props> 定义 java.util.Properties, 该标签使用多个 <prop> 作为子标签. 每个 <prop> 标签必须定义 key 属性.
+     -->
+    <!--
+    使用 utility scheme 定义集合:
+        使用基本的集合标签定义集合时, 不能将集合作为独立的 Bean 定义, 导致其他 Bean 无法引用该集合, 所以无法在不同 Bean 之间共享集合.
+        可以使用 util schema 里的集合标签定义独立的集合 Bean. 需要注意的是, 必须在 <beans> 根元素里添加 util schema 定义 .
+    -->
+    <!-- 声明集合类型的 bean -->
+    <util:list id="cars">
+        <ref bean="car"/>
+        <ref bean="car2"/>
+    </util:list>
+
+    <bean id = "user2" class="indi.sword.spring._01helloworld.User">
+        <property name="userName" value="user2"></property>
+        <!-- 引用外部声明的 list -->
+        <property name="cars" ref="cars"></property>
+    </bean>
+    <!--
+        使用 p 命名空间:
+            为了简化 XML 文件的配置，越来越多的 XML 文件采用属性而非子元素配置信息。
+            Spring 从 2.5 版本开始引入了一个新的 p 命名空间，可以通过 <bean> 元素属性的方式配置 Bean 的属性。
+            使用 p 命名空间后，基于 XML 的配置方式将进一步简化.
+    -->
+    <bean id = "user3" class="indi.sword.spring._01helloworld.User"
+        p:cars-ref="cars" p:userName="user3">
+    </bean>
+
+    <!--
+    继承 Bean 配置:
+        Spring 允许继承 bean 的配置, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean.
+        子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置 .
+        子 Bean 也可以覆盖从父 Bean 继承过来的配置 .
+        父 Bean 可以作为配置模板, 也可以作为 Bean 实例. 若只想把父 Bean 作为模板, 可以设置 <bean> 的abstract 属性为 true, 这样 Spring 将不会实例化这个 Bean .
+        并不是 <bean> 元素里的所有属性都会被继承. 比如: autowire, abstract 等.
+        也可以忽略父 Bean 的 class 属性, 让子 Bean 指定自己的类, 而共享相同的属性配置. 但此时 abstract 必须设为 true
+    -->
+    <!-- bean 的配置能够继承吗 ? 使用 parent 来完成继承 -->
+    <bean id="user4" parent="user" p:userName="user4"></bean>
+
+    <bean id="user6" parent="user" p:userName="user6"></bean>
+
+    <!--
+    依赖 Bean 配置:
+        Spring 允许用户通过 depends-on 属性设定 Bean 前置依赖的Bean，前置依赖的 Bean 会在本 Bean 实例化之前创建好 .
+        如果前置依赖于多个 Bean，则可以通过逗号，空格或的方式配置 Bean 的名称 .
+    -->
+    <!-- 测试 depents-on -->
+    <bean id="user5" parent="user" p:userName="user5" depends-on="user6"></bean>
+
+
+
+
+</beans>
