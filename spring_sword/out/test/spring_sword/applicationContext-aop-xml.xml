@@ -19,7 +19,7 @@
 	<!-- 配置 AOP -->
 	<aop:config>
 		<!-- 配置切点表达式 -->
-		<aop:pointcut expression="execution(* indi.sword.spring._04aop.xml.ArithmeticCalculator.*(int, int))"
+		<aop:pointcut expression="execution(* indi.sword.spring._04aop.normal.ArithmeticCalculator.*(int, int))"
 			id="pointcut"/>
 		<!-- 配置切面及通知 -->
 		<aop:aspect ref="loggingAspect" order="2">

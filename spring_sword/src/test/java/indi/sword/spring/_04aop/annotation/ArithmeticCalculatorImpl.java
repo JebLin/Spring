@@ -1,5 +1,6 @@
-package indi.sword.spring._04aop;
+package indi.sword.spring._04aop.annotation;
 
+import indi.sword.spring._04aop.normal.ArithmeticCalculator;
 import org.springframework.stereotype.Component;
 
 @Component("arithmeticCalculator")

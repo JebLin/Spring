@@ -1,4 +1,4 @@
-package indi.sword.spring._04aop;
+package indi.sword.spring._04aop.normal;
 
 public class ArithmeticCalculatorLoggingImpl implements ArithmeticCalculator {
 

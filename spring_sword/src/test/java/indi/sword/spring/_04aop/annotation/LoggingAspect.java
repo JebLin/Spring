@@ -1,4 +1,4 @@
-package indi.sword.spring._04aop;
+package indi.sword.spring._04aop.annotation;
 
 import java.util.Arrays;
 
@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
  * 5.1 切面必须是 IOC 中的 bean: 实际添加了 @Component 注解
  * 5.2 声明是一个切面: 添加 @Aspect
  * 5.3 声明通知: 即额外加入功能对应的方法.
- * 5.3.1 前置通知: @Before("execution(public int indi.sword.spring._04aop.ArithmeticCalculator.*(int, int))")
+ * 5.3.1 前置通知: @Before("execution(public int indi.sword.spring._04aop.normal.ArithmeticCalculator.*(int, int))")
  * @Before 表示在目标方法执行之前执行 @Before 标记的方法的方法体.
  * @Before 里面的是切入点表达式:
  *
@@ -92,7 +92,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-	@Before("execution(public int indi.sword.spring._04aop.ArithmeticCalculator.*(int, int))")
+	@Before("execution(public int indi.sword.spring._04aop.normal.ArithmeticCalculator.*(int, int))")
 	public void beforeMethod(JoinPoint joinPoint){
 		String methodName = joinPoint.getSignature().getName();
 		Object [] args = joinPoint.getArgs();

@@ -1,4 +1,4 @@
-package indi.sword.spring._04aop;
+package indi.sword.spring._04aop.normal;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
