@@ -12,10 +12,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="applicationContext-aop-xml.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArithmeticCalculatorImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/ArithmeticCalculatorImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext-aop-xml.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/applicationContext-aop-xml.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
+            <state relative-caret-position="216">
               <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
               <folding />
             </state>
@@ -25,7 +35,7 @@
       <file leaf-file-name="LoggingAspect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/LoggingAspect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
+            <state relative-caret-position="1008">
               <caret line="52" column="46" lean-forward="false" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
               <folding />
             </state>
@@ -52,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArithmeticCalculatorImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArithmeticCalculatorImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/ArithmeticCalculatorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
+            <state relative-caret-position="600">
               <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
@@ -823,7 +833,7 @@
       <workItem from="1507432168662" duration="13586000" />
       <workItem from="1507540036535" duration="1800000" />
       <workItem from="1507590931095" duration="618000" />
-      <workItem from="1507610878594" duration="8434000" />
+      <workItem from="1507610878594" duration="9045000" />
     </task>
     <servers />
   </component>
@@ -833,7 +843,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48402000" />
+    <option name="totallyTimeSpent" value="49013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1081,14 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/ArithmeticCalculatorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/ArithmeticCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -1188,42 +1190,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/ValidationAspect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/LoggingAspect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="52" column="46" lean-forward="false" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/ArithmeticCalculatorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/ArithmeticCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1238,8 +1208,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/applicationContext-aop-xml.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
+        <state relative-caret-position="216">
           <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/ArithmeticCalculatorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/ValidationAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/LoggingAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="52" column="46" lean-forward="false" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/indi/sword/spring/_04aop/xml/ArithmeticCalculatorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
