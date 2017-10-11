@@ -6,6 +6,8 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -88,19 +90,28 @@ import org.springframework.stereotype.Component;
  */
 
 //通过添加 @Aspect 注解声明一个 bean 是一个切面!
-@Aspect
+@Aspect // 切面(Aspect) : 通知(Advice)和切入点(Pointcut)共同组成了切面(Aspect)：时间、地点和要发生的“故事”
+@Order(1)
 @Component
 public class LoggingAspect {
 
-	@Before("execution(public int indi.sword.spring._04aop.normal.ArithmeticCalculator.*(int, int))")
-	public void beforeMethod(JoinPoint joinPoint){
+
+	//通过 @Pointcut 注解将一个切入点声明成简单的方法. 切入点的方法体通常是空的, 因为将切入点定义与应用程序逻辑混在一起是不合理的.
+	@Pointcut("execution(public int indi.sword.spring._04aop.normal.ArithmeticCalculator.*(int, int))") // 切入点(Pointcut) : “故事”发生的地点
+	public void pointCut(){
+	}
+
+	@Before("pointCut()") //通知(Advice) : 切面要发生的“故事”和时间
+	public void beforeMethod(JoinPoint joinPoint){ // 连接点(Joinpoint) : 程序能够应用通知的一个“时机”
 		String methodName = joinPoint.getSignature().getName();
 		Object [] args = joinPoint.getArgs();
 
 		System.out.println("The method " + methodName + " begins with " + Arrays.asList(args));
 	}
 
-	@After("execution(* indi.sword.spring._04aop.*.*(..))")
+	// -----------------------------  直接写法 ↓↓↓ -----------------------------
+
+	@After("execution(* indi.sword.spring._04aop.normal.*.*(..))")
 	public void afterMethod(JoinPoint joinPoint){
 		String methodName = joinPoint.getSignature().getName();
 		System.out.println("The method " + methodName + " ends");
