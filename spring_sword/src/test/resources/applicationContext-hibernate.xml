@@ -29,25 +29,25 @@
         <property name="dataSource" ref="dataSource"></property>
 
         <!--hibernate配置文件地点-->
-        <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 
-        <property name="hibernateProperties">
+        <!--<property name="hibernateProperties">
             <props>
-                <!-- 方言 -->
+                &lt;!&ndash; 方言 &ndash;&gt;
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <!-- session -->
+                &lt;!&ndash; session &ndash;&gt;
                 <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
-                <!-- 后台输出SQL语句 -->
+                &lt;!&ndash; 后台输出SQL语句 &ndash;&gt;
                 <prop key="hibernate.show_sql">false</prop>
-                <!-- 后台输出SQL语句时格式化 -->
+                &lt;!&ndash; 后台输出SQL语句时格式化 &ndash;&gt;
                 <prop key="hibernate.format_sql">true</prop>
-                <!-- 数据库表的操作 -->
+                &lt;!&ndash; 数据库表的操作 &ndash;&gt;
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <!-- javax.persistence.validation.mode默认情况下是auto的， 就是说如果不设置的话它是会自动去你的classpath下面找一个bean-validation**包
-                    所以把它设置为none即可 -->
+                &lt;!&ndash; javax.persistence.validation.mode默认情况下是auto的， 就是说如果不设置的话它是会自动去你的classpath下面找一个bean-validation**包
+                    所以把它设置为none即可 &ndash;&gt;
                 <prop key="javax.persistence.validation.mode">none</prop>
             </props>
-        </property>
+        </property>-->
 
         <!--加载实体类的映射文件位置和名称-->
         <property name="mappingLocations"
