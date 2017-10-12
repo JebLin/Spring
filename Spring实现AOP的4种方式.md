@@ -9,7 +9,7 @@
 2.连接点(Joinpoint):
 程序能够应用通知的一个“时机”，这些“时机”就是连接点，例如方法被调用时、异常被抛出时等等。
 
-3.切入点(Pointcut)
+3.切入点(Pointcut):
 通知(Advice)定义了切面要发生的“故事”和时间，那么切入点就定义了“故事”发生的地点，例如某个类或方法的名称，Spring中允许我们方便的用正则表达式来指定
     @Pointcut("execution(public * com.bjsxt.service..*.add(..))")
     public void myMethod(){};  
