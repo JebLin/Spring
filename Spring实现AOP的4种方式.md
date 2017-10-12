@@ -14,7 +14,7 @@
     @Pointcut("execution(public * com.bjsxt.service..*.add(..))")
     public void myMethod(){};  
 
-4.切面(Aspect)
+4.切面(Aspect):
 通知(Advice)和切入点(Pointcut)共同组成了切面(Aspect)：时间、地点和要发生的“故事”
     @Aspect
     @Component
